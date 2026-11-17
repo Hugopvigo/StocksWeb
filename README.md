@@ -48,7 +48,7 @@ Está desplegado en **[stocks.hugoperezvigo.es](https://stocks.hugoperezvigo.es/
 |---|---|
 | ![escritorio](docs/capturas/01-desktop.jpg) | ![admin](docs/capturas/02-admin.jpg) |
 | **Escritorio**: evolución a la izquierda, lista de seguimiento a la derecha y distribución debajo del gráfico. | **Admin**: totales, formulario de activos y tabla con valor y P&L por posición. |
-| ![móvil](docs/capturas/03-movil.jpg) | |
+| <div align="center"><img src="docs/capturas/03-movil.jpg" alt="Móvil" width="300"></div> | |
 | **Móvil**: mismo contenido reordenado en una sola columna, con el gráfico y la distribución antes de la lista. | |
 
 ## Qué hace

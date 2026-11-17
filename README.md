@@ -1,5 +1,10 @@
 <meta property="og:title" content="STOCKS DASHBOARD">
 <meta property="og:description" content="Un dashboard para seguir tus acciones y ETFs con datos públicos, actualizados cada hora.">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hugopvigo/StocksWeb/main/docs/capturas/og.png">
+
+<p align="center">
+  <img src="docs/capturas/00-cabecera.png" alt="Stocks Dashboard — acciones y ETFs con cartera privada" width="100%">
+</p>
 
 <p align="center">
   <img src="docs/capturas/01-desktop.jpg" alt="Stocks Dashboard — evolución, seguimiento y distribución de la cartera" width="100%">

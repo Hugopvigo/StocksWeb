@@ -121,7 +121,7 @@ button { cursor: pointer; }
   margin-bottom: 24px;
 }
 
-.summary > div { padding: 14px 14px 15px; min-width: 0; }
+.summary > div { padding: 14px 14px 15px; min-width: 0; text-align: center; }
 .summary > div + div { border-left: 1px solid var(--border); }
 
 .summary .label {
@@ -399,7 +399,7 @@ td .t-tick { font-size: 11px; color: var(--faint); font-family: var(--mono); }
     gap: 18px;
     align-items: start;
   }
-  .layout > section:first-child .section-head { margin-top: 0; }
+  .layout > section > .section-head:first-child { margin-top: 0; }
   .chart-box { height: 340px; }
   .w-row { padding: 13px 15px; }
 }

@@ -14,7 +14,7 @@ HOSTS = ["query1.finance.yahoo.com", "query2.finance.yahoo.com"]
 
 
 def chart_url(ticker: str, host: str = HOSTS[0]) -> str:
-    return f"https://{host}/v8/finance/chart/{ticker}?range=1y&interval=1d"
+    return f"https://{host}/v8/finance/chart/{ticker}?range=5y&interval=1d"
 
 
 def parse_chart_json(data: dict) -> dict:

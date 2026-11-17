@@ -143,7 +143,7 @@
     btn.addEventListener("click", function () {
       state.days = parseInt(btn.dataset.days, 10);
       document.querySelectorAll(".range").forEach(function (b) { b.setAttribute("aria-pressed", b === btn ? "true" : "false"); });
-      $("range-hint").textContent = state.days === 365 ? "Último año" : state.days === 0 ? "Todo el histórico" : "Últimos " + state.days + " días";
+      $("range-hint").textContent = state.days === 365 ? "Último año" : state.days === 0 ? "Últimos 5 años" : "Últimos " + state.days + " días";
       renderChart();
     });
   });

@@ -58,4 +58,4 @@ def test_chart_url_points_to_public_endpoint():
 
     assert "query1.finance.yahoo.com" in url
     assert "/v8/finance/chart/AAPL" in url
-    assert "range=1y" in url
+    assert "range=5y" in url

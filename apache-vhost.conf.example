@@ -1,0 +1,29 @@
+# /etc/apache2/sites-available/stocks.hugoperezvigo.es.conf
+# Copiar en VPS 7, ajustar rutas de certificado si hace falta y:
+#   a2ensite stocks.hugoperezvigo.es && apache2ctl configtest && systemctl reload apache2
+
+<VirtualHost *:80>
+    ServerName stocks.hugoperezvigo.es
+    Redirect permanent / https://stocks.hugoperezvigo.es/
+</VirtualHost>
+
+<IfModule mod_ssl.c>
+<VirtualHost *:443>
+    ServerName stocks.hugoperezvigo.es
+    ServerAdmin admin@hugoperezvigo.es
+
+    SSLEngine on
+    SSLCertificateFile /etc/apache2/ssl/cloudflare.pem
+    SSLCertificateKeyFile /etc/apache2/ssl/cloudflare-key.pem
+
+    ProxyPreserveHost On
+    ProxyPass / http://127.0.0.1:8083/
+    ProxyPassReverse / http://127.0.0.1:8083/
+
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    ErrorLog ${APACHE_LOG_DIR}/stocks-error.log
+    CustomLog ${APACHE_LOG_DIR}/stocks-access.log combined
+</VirtualHost>
+</IfModule>

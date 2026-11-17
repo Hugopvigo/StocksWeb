@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Seguimiento de acciones y ETFs con datos públicos de Yahoo Finance, actualizados cada hora.">
+  <meta name="theme-color" content="#0f151d">
+  <title>Mis inversiones · Stocks</title>
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+  <header class="topbar wrap">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 17l5-5 4 3 8-9"></path><path d="M15 6h5v5"></path>
+        </svg>
+      </span>
+      <div>
+        <h1>Mis inversiones</h1>
+        <p>Acciones y ETFs · datos cada hora</p>
+      </div>
+    </div>
+    <span class="spacer"></span>
+    <a class="top-link" href="/admin">Administrar</a>
+  </header>
+
+  <main class="wrap">
+    <section class="summary" aria-label="Resumen de seguimiento">
+      <div><span class="label">Activos</span><span class="value num" id="s-count">—</span></div>
+      <div><span class="label">Composición</span><span class="value num" id="s-mix">—</span></div>
+      <div><span class="label">Actualizado</span><span class="value num" id="s-updated">—</span></div>
+    </section>
+
+    <div class="layout">
+      <section aria-labelledby="chart-section-title">
+        <div class="section-head">
+          <h2 id="chart-section-title">Evolución</h2>
+          <span class="hint" id="range-hint">Último año</span>
+        </div>
+        <div class="panel chart-panel">
+          <div class="chart-head">
+            <div class="chart-title">
+              <div><span class="name" id="c-name">—</span><span class="badge" id="c-tick"></span></div>
+              <div class="chart-price">
+                <span class="big num" id="c-price">—</span>
+                <span class="chg" id="c-chg"></span>
+              </div>
+            </div>
+            <div class="ranges" role="group" aria-label="Rango temporal">
+              <button class="range" type="button" data-days="30" aria-pressed="false">1M</button>
+              <button class="range" type="button" data-days="90" aria-pressed="false">3M</button>
+              <button class="range" type="button" data-days="180" aria-pressed="false">6M</button>
+              <button class="range" type="button" data-days="365" aria-pressed="true">1A</button>
+              <button class="range" type="button" data-days="0" aria-pressed="false">Todo</button>
+            </div>
+          </div>
+          <div class="chart-box">
+            <svg id="chart" role="img" aria-label="Gráfico histórico del activo seleccionado"></svg>
+            <div class="chart-tooltip" id="tt" aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="watch-title">
+        <div class="section-head">
+          <h2 id="watch-title">Seguimiento</h2>
+          <span class="hint">Toca un activo para ver su gráfico</span>
+        </div>
+        <div class="watchlist" id="watchlist" aria-live="polite"></div>
+
+        <div class="section-head"><h2>Distribución</h2><span class="hint">por número de activos</span></div>
+        <div class="panel dist" id="dist"></div>
+      </section>
+    </div>
+
+    <footer class="footer">
+      <span>Datos: Yahoo Finance · actualización horaria · precios con retraso, no en tiempo real.</span>
+      <span>No es asesoramiento financiero.</span>
+    </footer>
+  </main>
+
+  <script src="/static/charts.js"></script>
+  <script src="/static/public.js"></script>
+</body>
+</html>

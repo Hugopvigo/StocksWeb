@@ -1,0 +1,26 @@
+name: stocksweb
+
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    # El DNS interno de Docker (127.0.0.11) no resuelve hosts externos en este
+    # VPS (Oracle reenvía al metadata 169.254.169.254). Con la red del host
+    # se usa systemd-resolved, que sí funciona. La app escucha en 8083, tal
+    # como espera el vhost de Apache.
+    network_mode: host
+    environment:
+      DB_PATH: /data/stocks.db
+      REFRESH_INTERVAL_SECONDS: "3600"
+    command: uvicorn app.main:app --host 127.0.0.1 --port 8083
+    volumes:
+      - stocksdata:/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8083/healthz')"]
+      interval: 60s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  stocksdata:

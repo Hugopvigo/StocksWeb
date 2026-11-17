@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f151d">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Administrar · Stocks</title>
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+  <header class="topbar wrap">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 20h16"></path><path d="M7 16V9"></path><path d="M12 16V4"></path><path d="M17 16v-5"></path>
+        </svg>
+      </span>
+      <div>
+        <h1>Administrar cartera</h1>
+        <p>Solo tú puedes editar estos valores</p>
+      </div>
+    </div>
+    <span class="spacer"></span>
+    <a class="top-link" href="/">Ver web pública</a>
+  </header>
+
+  <main class="wrap">
+    <section class="summary summary-4" aria-label="Totales de la cartera">
+      <div><span class="label">Valor</span><span class="value num" id="t-value">—</span></div>
+      <div><span class="label">Coste</span><span class="value num" id="t-cost">—</span></div>
+      <div><span class="label">P&amp;L</span><span class="value num" id="t-pnl">—</span></div>
+      <div><span class="label">P&amp;L %</span><span class="value num" id="t-pct">—</span></div>
+    </section>
+
+    <section aria-labelledby="form-title">
+      <div class="section-head">
+        <h2 id="form-title">Añadir activo</h2>
+        <span class="hint" id="form-mode">Nuevo activo</span>
+      </div>
+      <form class="panel form-panel" id="asset-form">
+        <div class="form-grid">
+          <div class="field">
+            <label for="f-ticker">Ticker (Yahoo)</label>
+            <input id="f-ticker" name="ticker" required autocomplete="off" placeholder="aapl.us">
+          </div>
+          <div class="field">
+            <label for="f-name">Nombre</label>
+            <input id="f-name" name="name" autocomplete="off" placeholder="Apple">
+          </div>
+          <div class="field">
+            <label for="f-kind">Tipo</label>
+            <select id="f-kind" name="kind">
+              <option value="stock">Acción</option>
+              <option value="etf">ETF</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-qty">Cantidad</label>
+            <input id="f-qty" name="quantity" type="number" step="any" min="0" inputmode="decimal" placeholder="0">
+          </div>
+          <div class="field">
+            <label for="f-buy">Precio de compra</label>
+            <input id="f-buy" name="avg_buy" type="number" step="any" min="0" inputmode="decimal" placeholder="0.00">
+          </div>
+          <div class="field">
+            <label for="f-override">Precio manual (override)</label>
+            <input id="f-override" name="override_price" type="number" step="any" min="0" inputmode="decimal" placeholder="Automático">
+          </div>
+          <div class="field wide">
+            <span class="form-note">Tickers de Yahoo Finance: <span class="num">AAPL</span>, <span class="num">SAN.MC</span>, <span class="num">VOO</span>, <span class="num">^GSPC</span>. Se guardan en minúsculas. Si rellenas el precio manual, ese es el que ve el público.</span>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit" id="save-btn">Guardar activo</button>
+          <button class="btn btn-ghost" type="button" id="cancel-btn" hidden>Cancelar edición</button>
+          <button class="btn" type="button" id="refresh-btn">Actualizar precios</button>
+        </div>
+      </form>
+    </section>
+
+    <section aria-labelledby="table-title">
+      <div class="section-head">
+        <h2 id="table-title">Activos</h2>
+        <span class="hint">Desliza horizontalmente para ver más columnas</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Activo</th>
+              <th scope="col">Cant.</th>
+              <th scope="col">P. compra</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Variación</th>
+              <th scope="col">Valor</th>
+              <th scope="col">P&amp;L</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <p class="status" id="status" aria-live="polite"></p>
+    </section>
+
+    <footer class="footer">
+      <span>Datos: Yahoo Finance · actualización horaria.</span>
+      <span><a href="/">Volver al dashboard público</a></span>
+    </footer>
+  </main>
+
+  <script src="/static/admin.js"></script>
+</body>
+</html>

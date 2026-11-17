@@ -39,7 +39,7 @@
           <h2 id="chart-section-title">Evolución</h2>
           <span class="hint" id="range-hint">Último año</span>
         </div>
-        <div class="panel chart-panel">
+        <div class="panel chart-panel" id="chart-card">
           <div class="chart-head">
             <div class="chart-title">
               <div><span class="name" id="c-name">—</span><span class="badge" id="c-tick"></span></div>
@@ -61,6 +61,9 @@
             <div class="chart-tooltip" id="tt" aria-hidden="true"></div>
           </div>
         </div>
+
+        <div class="section-head"><h2>Distribución</h2><span class="hint">por número de activos</span></div>
+        <div class="panel dist" id="dist"></div>
       </section>
 
       <section aria-labelledby="watch-title">
@@ -69,9 +72,6 @@
           <span class="hint">Toca un activo para ver su gráfico</span>
         </div>
         <div class="watchlist" id="watchlist" aria-live="polite"></div>
-
-        <div class="section-head"><h2>Distribución</h2><span class="hint">por número de activos</span></div>
-        <div class="panel dist" id="dist"></div>
       </section>
     </div>
 
